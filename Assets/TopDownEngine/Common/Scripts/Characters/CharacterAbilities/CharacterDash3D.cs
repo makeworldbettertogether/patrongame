@@ -21,7 +21,7 @@ namespace MoreMountains.TopDownEngine
 	public class CharacterDash3D : CharacterAbility
 	{
 		/// the possible dash modes (fixed = always the same direction)
-		public enum DashModes { Fixed, MainMovement, SecondaryMovement, MousePosition }
+		public enum DashModes { Fixed, MainMovement, SecondaryMovement, MousePosition, ModelDirection }
 		/// the possible spaces the dash should happen in, either in world coordinates or local ones
 		public enum DashSpaces { World, Local }
 
@@ -85,6 +85,7 @@ namespace MoreMountains.TopDownEngine
 		protected int _dashingDirectionXAnimationParameter;
 		protected int _dashingDirectionYAnimationParameter;
 		protected int _dashingDirectionZAnimationParameter;
+		protected CharacterOrientation3D _characterOrientation3D;
         
 		/// <summary>
 		/// On init we initialize our cooldown and feedback
@@ -93,6 +94,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			base.Initialization();
 			_playerPlane = new Plane(Vector3.up, Vector3.zero);
+			_characterOrientation3D = _character.FindAbility<CharacterOrientation3D>();
 			_mainCamera = Camera.main;
 			Cooldown.Initialization();
 			DashFeedback?.Initialization(this.gameObject);
@@ -133,7 +135,6 @@ namespace MoreMountains.TopDownEngine
 			}
 			Cooldown.Start();
 
-			float angle  = 0f;
 			_movement.ChangeState(CharacterStates.MovementStates.Dashing);
 			_dashing = true;
 			_dashTimer = 0f;
@@ -148,6 +149,12 @@ namespace MoreMountains.TopDownEngine
 				_health.DamageDisabled();
 			}
 
+			HandleDashMode();
+		}
+
+		protected virtual void HandleDashMode()
+		{
+			float angle  = 0f;
 			switch (DashMode)
 			{
 				case DashModes.MainMovement:
@@ -173,9 +180,13 @@ namespace MoreMountains.TopDownEngine
 
 					_controller.CurrentDirection = (_dashDestination - this.transform.position).normalized;
 					break;
+				
+				case DashModes.ModelDirection:
+					_dashDestination = this.transform.position + _characterOrientation3D.ModelDirection.normalized * DashDistance;
+					break;
 
 				case DashModes.MousePosition:
-					Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+					Ray ray = _mainCamera.ScreenPointToRay(InputManager.Instance.MousePosition);
 					Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow);
 					float distance;
 					_playerPlane.SetNormalAndPosition(_playerPlane.normal, this.transform.position);

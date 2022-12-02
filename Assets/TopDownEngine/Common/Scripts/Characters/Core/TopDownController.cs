@@ -231,7 +231,7 @@ namespace MoreMountains.TopDownEngine
 		/// Resizes the controller's collider
 		/// </summary>
 		/// <param name="newHeight"></param>
-		public virtual void ResizeColliderHeight(float newHeight)
+		public virtual void ResizeColliderHeight(float newHeight, bool translateCenter = false)
 		{
 
 		}

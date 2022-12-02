@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: 21300016
     second: WeaponIcons_LoftSword
+  - first:
+      213: 6437930568224669061
+    second: WeaponIcons_Punch
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -331,6 +334,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: WeaponIcons_Punch
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58df8affdbf185950800000000000000
+      internalID: 6437930568224669061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -342,6 +366,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      WeaponIcons_Punch: 6437930568224669061
       WeaponIcons_Handgun: 21300002
       WeaponIcons_AssaultRifleAmmo: 21300004
       WeaponIcons_AssaultRifle: 21300008

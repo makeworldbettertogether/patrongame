@@ -148,7 +148,7 @@ namespace  MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Awake()
 		{
-			_health = this.gameObject.GetComponent<Health>();
+			_health = this.gameObject.GetComponentInParent<Health>();
 			InitializeLootTable();
 			InitializePools();
 			ResetRemainingQuantity();

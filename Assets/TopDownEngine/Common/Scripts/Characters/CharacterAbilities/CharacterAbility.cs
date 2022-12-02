@@ -267,7 +267,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Plays the ability start sound effect
 		/// </summary>
-		protected virtual void PlayAbilityStartSfx()
+		public virtual void PlayAbilityStartSfx()
 		{
 			if (AbilityStartSfx!=null)
 			{
@@ -279,7 +279,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Plays the ability used sound effect
 		/// </summary>
-		protected virtual void PlayAbilityUsedSfx()
+		public virtual void PlayAbilityUsedSfx()
 		{
 			if (AbilityInProgressSfx != null) 
 			{	
@@ -293,7 +293,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Stops the ability used sound effect
 		/// </summary>
-		protected virtual void StopAbilityUsedSfx()
+		public virtual void StopAbilityUsedSfx()
 		{
 			if (_abilityInProgressSfx != null)
 			{
@@ -305,7 +305,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Plays the ability stop sound effect
 		/// </summary>
-		protected virtual void PlayAbilityStopSfx()
+		public virtual void PlayAbilityStopSfx()
 		{
 			if (AbilityStopSfx!=null) 
 			{	
@@ -316,7 +316,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Plays the ability start sound effect
 		/// </summary>
-		protected virtual void PlayAbilityStartFeedbacks()
+		public virtual void PlayAbilityStartFeedbacks()
 		{
 			AbilityStartFeedbacks?.PlayFeedbacks(this.transform.position);
 			_startFeedbackIsPlaying = true;
@@ -334,7 +334,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Plays the ability stop sound effect
 		/// </summary>
-		protected virtual void PlayAbilityStopFeedbacks()
+		public virtual void PlayAbilityStopFeedbacks()
 		{
 			AbilityStopFeedbacks?.PlayFeedbacks();
 		}

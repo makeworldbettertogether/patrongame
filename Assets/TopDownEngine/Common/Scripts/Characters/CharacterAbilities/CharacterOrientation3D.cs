@@ -425,6 +425,15 @@ namespace MoreMountains.TopDownEngine
 		}
 
 		/// <summary>
+		/// Forces the character's model to face the specified angles
+		/// </summary>
+		/// <param name="angles"></param>
+		public virtual void Face(Vector3 angles)
+		{
+			_newMovementQuaternion = Quaternion.LookRotation(Quaternion.Euler(angles) * Vector3.forward);
+		}
+
+		/// <summary>
 		/// Adds required animator parameters to the animator parameters list if they exist
 		/// </summary>
 		protected override void InitializeAnimatorParameters()
